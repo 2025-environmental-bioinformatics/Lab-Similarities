@@ -1,4 +1,4 @@
-# Lab HMMER
+# 🧮 Lab HMMER
 
 [HMMER](http://hmmer.org/) implements methods using probalistic models (profile Hidden Markov Models, HMMs) to search sequence databases for sequence homologs. HMMER is designed to detect remote homologs as sensitively as possible, relying on the strength of its underlying probability models. HMMER can also work with query sequences, not just profiles, just like BLAST.
 
