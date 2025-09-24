@@ -63,7 +63,7 @@ Each of the various programs in the BLAST suite accepts a large number of option
     the name of the database to search against (as opposed to using -subject).
 >
 >**-evalue**
-	only hits with E values smaller than this should be reported. For example: -evalue 0.001 or -evalue 1e-6 *evaluation of the evalue cut-off should be performed*
+	only hits with E values^* smaller than this should be reported. For example: -evalue 0.001 or -evalue 1e-6 *evaluation of the evalue cut-off should be performed*
 >
 > **-num_threads** <integer>
     number of CPU cores to use.
@@ -76,6 +76,14 @@ Each of the various programs in the BLAST suite accepts a large number of option
 >
 >**-out**
 Write the output to as opposed to the default of standard output.
+
+
+*The Expect value (E) is a parameter that describes the number of hits one can “expect” to see by chance when searching a database of a particular size. It decreases exponentially as the Score (S) of the match increases. Essentially, the E value describes the random background noise. For example, an E value of 1 assigned to an alignment means that in a database of the same size one expects to see 1 match with a similar score, or higher, simply by chance.
+
+The lower the E-value the more “significant” the match is. However, keep in mind that virtually identical short alignments have relatively high E values. This is because the calculation of the E value takes into account the length of the query sequence. These high E values make sense because shorter sequences have a higher probability of occurring in the database purely by chance. For more details please see the calculations in the BLAST Course.
+
+The Expect value can also be used as a convenient way to create a significance threshold for reporting results. You can change the Expect value threshold on most BLAST search pages. When the Expect value is increased from the default value of 0.05, a larger list with more low-scoring hits can be reported.
+
 
 #### BLAST Databases
 Additionally, blast provides a tool called makeblastdb that converts a subject FASTA file into an indexed and quickly searchable (but not human-readable) version of the same information, stored in a set of similarly named files (often at least three ending in .pin, .psq, and .phr for protein sequences, and .nin, .nsq, and .nhr for nucleotide sequences). This set of files represents the “database,” and the database name is the shared file name prefix of these files.
