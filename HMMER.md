@@ -22,11 +22,11 @@ For today's short exercise, we will search a manually constructed database locat
 
 
 ### Set up the hmmer environment through mamba
-*start a tmux session and load your mamba environment*
+*start a screen session and create your conda environment*
 ```
-mamba create -n hmmer
-mamba activate hmmer
-mamba install -c bioconda hmmer
+conda create -n hmmer
+conda activate hmmer
+conda install -c bioconda hmmer
 ```
 
 ### Create an HMM profile from an alignement
