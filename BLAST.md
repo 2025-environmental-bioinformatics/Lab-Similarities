@@ -21,7 +21,7 @@ https://blast.ncbi.nlm.nih.gov/Blast.cgi
 >A summer student recovered putative nitrogenase genes from marine metagenomic assemblies (Tara Oceans). Using web-based blast, can you help her/him to evaluate the results?
 >
 ```text
-\>Putative_nifH_seq1
+>Putative_nifH_seq1
 VLGDVVCGGFSVPLRGGGREVVIIISGELMAIYAGNNILRAVKAIGGNPKILGYVVNMRG
 VPNETSIVEAFATKTGVPILASIKRDPVTFKEAERLGGPIVRTLPDSEIADTFRQMAKRV
 QLGAGDTVPRPIDSYDELFDMFMSFQDLEGETGKEGQASYLVKIPNDPVKRDKPIRISVY
@@ -31,7 +31,7 @@ LYDVLGDTVCGGFARPLKYTPQAYIIANGETSSLTQAMKIAQSIQVASSRGADVGLAGVI
 NNMRGVPNEEAIVEEAFETVGIPVIHHIPRSILVQTAENLRTTVVEAFLESAQAKQYLEL
 AEKMQQNTQRHALTREVLSSREIVAIVNKHA
 
-\>Putative_nifH_seq2
+>Putative_nifH_seq2
 MAKEIGIYGKGGIGKSTTVSNVSAATSELGFKVMQIGCDPKADSTNSLLGGKYIPTILDT
 VLEADTVREYTEVDVSKVIFEGYNGIVCAECGGPDPGIGCAGRGVITAIELMKEQGAFDS
 INPDFIFYDVLGDVVCGGFAMPLRQGICQQVYVIVSPNFASMYAANNLFKAIVRFGERGG
@@ -43,8 +43,12 @@ AKTYRGLAAEIAKREQQIIPVPAEAPALRKWAQGWLERLHASALKE
 #### Stand-alone blast
 For large datasets, using the web-based blast to get functional (and/or taxonomic annotation) is not option. But, it can be installed and run locally.
 
-We will use the same conda environment we created earlier *downloading* to install blast. Make sure that *downloading* is active and install blast:
-```conda install -c bioconda blast```
+We will create a conda environment called `blast` to install the program
+```
+conda create -n blast
+conda activate
+conda install -c bioconda blast
+```
 
 Each of the various programs in the BLAST suite accepts a large number of options; run blastn -help to see them for the blastn program. Here is a summary of a few parameters that are most commonly used for blastn et al.:
 
@@ -80,7 +84,7 @@ We will use
 
 When using the -db option, the BLAST tools will search for the database files in three locations: (1) the present working directory, (2) your home directory, and (3) the paths specified in the $BLASTDB environment variable. If you created your database in other location, you have to provide the full path to this location.
 
->The file ""/proteins/For_database/dataset.faa"  contains protein sequences for all genes retrieved from several marine single cell genomes. Make a blast formatted database and scan this database for our three genes of interest (in the file proteins/query.faa). Before you begin make sure that you use SLURM (srun for this example). These kind of search are computationally heavy and cannot be handled by the login nodes.
+>The file `/proj/omics/env-bio/2025/collaboration/common_material/dataset.faa` contains protein sequences for all genes retrieved from several marine single cell genomes. Make a blast formatted database and scan this database for our three genes of interest (in the file `/proj/omics/env-bio/2025/collaboration/common_material/query.faa`). Before you begin make sure that you use SLURM (srun for this example). These kind of search are computationally heavy and cannot be handled by the login nodes.
 For your queries use
 evalue: 1e-10
 number of threads: 2
@@ -88,13 +92,25 @@ and as outfmt: "6 qseqid salltitles pident length mismatch gapopen qstart qend s
 
 ```srun -p scavenger --time=00:30:00 --ntasks-per-node=2 --pty bash```
 
+Make sure that you are inside your class folder 
+For me:
+`/proj/omics/env-bio/2025/users/mpachiadaki`
+
+and create two new folders: called `blast_results` and another `database`
+```bash
+mkdir blast_results
+mkdir database
+```
+
 > Do not forget to activate the conda environment where blast is installed
 
-```makeblastdb -in dataset.faa -title dataset -dbtype prot -out dataset```
+``` bash
+cd database # go inside the directory where the database will be created
+makeblastdb -in /proj/omics/env-bio/2025/collaboration/common_material/dataset.faa -title dataset -dbtype prot -out dataset #create the protein database
 
-
-```blastp -query query.faa -db dataset -evalue 1e-10 -num_threads 4 -outfmt "6 qseqid salltitles pident length mismatch gapopen qstart qend sstart send evalue bitscore" -out query_blastp.txt```
-
+cd .. #go a level up
+blastp -query /proj/omics/env-bio/2025/collaboration/common_material/query.faa -db dataset/dataset -evalue 1e-10 -num_threads 4 -outfmt "6 qseqid salltitles pident length mismatch gapopen qstart qend sstart send evalue bitscore" -out blast/results/query_blastp.txt```
+```
 >Check the output file. What do you see?
 
 ## Other tools
