@@ -16,7 +16,6 @@ Other  BLAST tools include psiblast, which produces an initial search and tweaks
 
 
 Go to [Blast](https://blast.ncbi.nlm.nih.gov/Blast.cgi)
-https://blast.ncbi.nlm.nih.gov/Blast.cgi
 
 >A summer student recovered putative nitrogenase genes from marine metagenomic assemblies (Tara Oceans). Using web-based blast, can you help her/him to evaluate the results?
 >
@@ -42,6 +41,8 @@ AKTYRGLAAEIAKREQQIIPVPAEAPALRKWAQGWLERLHASALKE
 
 #### Stand-alone blast
 For large datasets, using the web-based blast to get functional (and/or taxonomic annotation) is not option. But, it can be installed and run locally.
+
+Start your screen session and an srun
 
 We will create a conda environment called `blast` to install the program
 ```
