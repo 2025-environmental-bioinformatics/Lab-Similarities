@@ -20,8 +20,7 @@ https://blast.ncbi.nlm.nih.gov/Blast.cgi
 
 >A summer student recovered putative nitrogenase genes from marine metagenomic assemblies (Tara Oceans). Using web-based blast, can you help her/him to evaluate the results?
 >
->\>Putative_nifH_seq1
->
+\>Putative_nifH_seq1
 VLGDVVCGGFSVPLRGGGREVVIIISGELMAIYAGNNILRAVKAIGGNPKILGYVVNMRG
 VPNETSIVEAFATKTGVPILASIKRDPVTFKEAERLGGPIVRTLPDSEIADTFRQMAKRV
 QLGAGDTVPRPIDSYDELFDMFMSFQDLEGETGKEGQASYLVKIPNDPVKRDKPIRISVY
