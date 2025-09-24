@@ -18,7 +18,7 @@ HMMER can be run [interactively](https://www.ebi.ac.uk/Tools/hmmer/) or through 
 
 - `nhmmer` is the equivalent of `hmmsearch` and `phmmer`, but is capable of searching long, chromosome-size target DNA sequences. `nhmmscan` is the equivalent of hmmscan, capable of using chromosome-size DNA sequences as a query into a profile database.
 
-For today's short exercise, we will search a manually constructed database located in `/vortexfs1/omics/env-bio/collaboration/sequences/hmmer_example/`. The database `SPO-all-DCM-0.8-5.00.proteins.faa` consist of all genes from the Tara Ocean metagenomes corresponding to the deep chlorophyl maximum samples from the Southern Pacific Ocean, 0.8 - 5.00um fraction. We want to detect the nitrogenase iron protein (nifH) gene.
+For today's short exercise, we will search a manually constructed database located in `/proj/omics/env-bio/2025/collaboration/common_material/SPO-all-DCM-0.8-5.00.proteins.faa`. The database `SPO-all-DCM-0.8-5.00.proteins.faa` consist of all genes from the Tara Ocean metagenomes corresponding to the deep chlorophyl maximum samples from the Southern Pacific Ocean, 0.8 - 5.00um fraction. We want to detect the nitrogenase iron protein (nifH) gene.
 
 
 ### Set up the hmmer environment through mamba
@@ -30,18 +30,18 @@ conda install -c bioconda hmmer
 ```
 
 ### Create an HMM profile from an alignement
-*navigate to your user directory inside the class folder and clone the current lab repo; use the srun node you started for the BLAST lab to run the commands or put in a similar request for resources*
+*navigate to your user directory inside the class folder and make two directories: one to store the hmmer output and the other to store the profile*
 
 Activate you hmmer environment
 
 and create the profile using the alignment
 ```
-hmmbuild nitrogenase.hmm nitrogenase.aln
+hmmbuild nitrogenase.hmm /proj/omics/env-bio/2025/collaboration/common_material/nitrogenase.aln
 ```
 
 ### Perform search 
 ```
-hmmsearch -o SPO-all-DCM-0.8-5.00_nitrogenase.out nitrogenase.hmm /vortexfs1/omics/env-bio/collaboration/sequences/hmmer_example/SPO-all-DCM-0.8-5.00.proteins.faa
+hmmsearch -o SPO-all-DCM-0.8-5.00_nitrogenase.out /proj/omics/env-bio/2025/collaboration/common_material/nitrogenase.hmm /proj/omics/env-bio/2025/collaboration/common_material/SPO-all-DCM-0.8-5.00.proteins.faa
 ```
 
 
