@@ -31,17 +31,24 @@ conda install -c bioconda hmmer
 
 ### Create an HMM profile from an alignement
 *navigate to your user directory inside the class folder and make two directories: one to store the hmmer output and the other to store the profile*
+```bash
+mkdir hmmer_out
+mkdir hmmer_profiles
+```
+
 
 Activate you hmmer environment
 
-and create the profile using the alignment
+and go into your `hmmer_profiles` folder and create the profile using the alignment
 ```
+cd hmmer_profiles
 hmmbuild nitrogenase.hmm /proj/omics/env-bio/2025/collaboration/common_material/nitrogenase.aln
 ```
 
 ### Perform search 
 ```
-hmmsearch -o SPO-all-DCM-0.8-5.00_nitrogenase.out /proj/omics/env-bio/2025/collaboration/common_material/nitrogenase.hmm /proj/omics/env-bio/2025/collaboration/common_material/SPO-all-DCM-0.8-5.00.proteins.faa
+cd ..
+hmmsearch -o hmmer_out/SPO-all-DCM-0.8-5.00_nitrogenase.out hmmer_profiles/nitrogenase.hmm /proj/omics/env-bio/2025/collaboration/common_material/SPO-all-DCM-0.8-5.00.proteins.faa
 ```
 
 
