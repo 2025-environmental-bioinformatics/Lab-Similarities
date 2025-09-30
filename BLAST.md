@@ -81,7 +81,9 @@ Write the output to as opposed to the default of standard output.
 
 The lower the E-value the more “significant” the match is. However, keep in mind that virtually identical short alignments have relatively high E values. This is because the calculation of the E value takes into account the length of the query sequence. These high E values make sense because shorter sequences have a higher probability of occurring in the database purely by chance. For more details please see the calculations in the BLAST Course.
 
-The Expect value can also be used as a convenient way to create a significance threshold for reporting results. You can change the Expect value threshold on most BLAST search pages. When the Expect value is increased from the default value of 0.05, a larger list with more low-scoring hits can be reported.
+The Expect value can also be used as a convenient way to create a threshold for reporting results. You can change the Expect value threshold on most BLAST search pages. When the Expect value is increased from the default value of 0.05, a larger list with more low-scoring hits can be reported.
+
+To check how evalue is calculated, you can use this [webpage](https://www.metagenomics.wiki/tools/blast/evalue)
 
 
 #### BLAST Databases
@@ -117,7 +119,7 @@ cd database # go inside the directory where the database will be created
 makeblastdb -in /proj/omics/env-bio/2025/collaboration/common_material/dataset.faa -title dataset -dbtype prot -out dataset #create the protein database
 
 cd .. #go a level up
-blastp -query /proj/omics/env-bio/2025/collaboration/common_material/query.faa -db dataset/dataset -evalue 1e-10 -num_threads 4 -outfmt "6 qseqid salltitles pident length mismatch gapopen qstart qend sstart send evalue bitscore" -out blast/results/query_blastp.txt```
+blastp -query /proj/omics/env-bio/2025/collaboration/common_material/query.faa -db database/dataset -evalue 1e-10 -num_threads 2 -outfmt "6 qseqid salltitles pident length mismatch gapopen qstart qend sstart send evalue bitscore" -out blast/results_query_blastp.txt
 ```
 >Check the output file. What do you see?
 
