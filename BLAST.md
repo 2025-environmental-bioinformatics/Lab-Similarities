@@ -119,7 +119,7 @@ cd database # go inside the directory where the database will be created
 makeblastdb -in /proj/omics/env-bio/2025/collaboration/common_material/dataset.faa -title dataset -dbtype prot -out dataset #create the protein database
 
 cd .. #go a level up
-blastp -query /proj/omics/env-bio/2025/collaboration/common_material/query.faa -db database/dataset -evalue 1e-10 -num_threads 2 -outfmt "6 qseqid salltitles pident length mismatch gapopen qstart qend sstart send evalue bitscore" -out blast/results_query_blastp.txt
+blastp -query /proj/omics/env-bio/2025/collaboration/common_material/query.faa -db database/dataset -evalue 1e-10 -num_threads 2 -outfmt "6 qseqid salltitles pident length mismatch gapopen qstart qend sstart send evalue bitscore" -out blast_results/query_blastp.txt
 ```
 >Check the output file. What do you see?
 
